@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Стили для поля поиска контейнера */
+.search-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    /* Добавьте стили для поля поиска */
+}
+
+/* Стили для меню профиля пользователя */
+.profile-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* Добавьте стили для меню профиля */
+}
+
+/* Стили для контейнера с пчелиными сотами */
+.hexagon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Стили для пчелиных сот */
+.hexagon {
+    width: 100px;
+    height: 115.47px;
+    background-color: #ffcc00;
+    margin: 10px;
+    /* Добавьте стили для пчелиных сот */
+}
+
+/* Стили для окна результатов поиска контейнера */
+.search-results {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    /* Добавьте стили для окна результатов поиска */
+}
+
+/* Стили для окна добавления контейнера */
+.add-container {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Добавьте стили для окна добавления контейнера */

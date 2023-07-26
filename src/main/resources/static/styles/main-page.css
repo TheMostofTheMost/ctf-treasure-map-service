@@ -1,0 +1,39 @@
+html {
+    height: 100%;
+    width: 100%;
+    background-image: url('/images/map-background.jpg');
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.main-container {
+    height: 33%;
+    width: 100%;
+}
+
+.middle-container {
+    display: flex;
+    justify-content: center;
+}
+.upper-octagon-container {
+    display: flex;
+}
+.lower-octagon-container {
+    display: flex;
+    margin-left: 7vh;
+    margin-top: -4.2vh;
+}
+.octagon-block {
+    background: #2F73B6;
+    width: 10vh;
+    height: 10vh;
+    padding: 3.5vh 2vh;
+    color: #fff;
+    text-align: center;
+    clip-path: polygon( 50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25% );
+}
