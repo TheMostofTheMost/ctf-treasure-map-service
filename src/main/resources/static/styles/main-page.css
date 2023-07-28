@@ -28,18 +28,30 @@ html {
 }
 .lower-octagon-container {
     display: flex;
-    margin-left: 12vh;
-    margin-top: -6.7vh;
+    margin-left: 10vh;
+    margin-top: -4.7vh;
 }
 .octagon-block {
     background-size: cover;
     cursor: pointer;
     width: 20vh;
     height: 20vh;
-    padding: 3.5vh 2vh;
     color: #fff;
     text-align: center;
-    clip-path: polygon( 50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25% );
+    clip-path: polygon( 50% 2%, 98% 25%, 98% 75%, 50% 98%, 2% 75%, 2% 25%);
+    display: flex;
+    justify-content: end;
+}
+
+.octagon-background-container {
+    background-color: whitesmoke;
+    background-size: cover;
+    cursor: pointer;
+    width: 20vh;
+    height: 20vh;
+    color: #fff;
+    text-align: center;
+    clip-path: polygon( 50% 1%, 99% 25%, 99% 75%, 50% 99%, 1% 75%, 1% 25% );
     display: flex;
     justify-content: end;
 }
