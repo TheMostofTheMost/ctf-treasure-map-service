@@ -1,4 +1,5 @@
 html {
+    background-size: cover;
     height: 100%;
     width: 100%;
     background-image: url('/images/map-background.jpg');
@@ -10,6 +11,8 @@ html {
     height: 100%;
     width: 100%;
 }
+
+
 
 .main-container {
     height: 33%;
@@ -25,15 +28,81 @@ html {
 }
 .lower-octagon-container {
     display: flex;
-    margin-left: 7vh;
-    margin-top: -4.2vh;
+    margin-left: 12vh;
+    margin-top: -6.7vh;
 }
 .octagon-block {
-    background: #2F73B6;
-    width: 10vh;
-    height: 10vh;
+    background-size: cover;
+    cursor: pointer;
+    width: 20vh;
+    height: 20vh;
     padding: 3.5vh 2vh;
     color: #fff;
     text-align: center;
     clip-path: polygon( 50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25% );
+    display: flex;
+    justify-content: end;
+}
+
+#first-location {
+    background-image: url('/images/1_image.jpg');
+}
+#second-location {
+    background-image: url('/images/2_image.jpg');
+}
+#third-location {
+    background-image: url('/images/3_image.jpg');
+}
+#fourth-location {
+    background-image: url('/images/4_image.jpg');
+}
+#fifth-location {
+    background-image: url('/images/5_image.jpg');
+}
+
+
+.octagon-containers-count {
+    width: 2vh;
+    height: 2vh;
+    margin-top: 0.8vh;
+    margin-right: -1.5vh;
+}
+
+/*https://www.freecodecamp.org/news/apply-borders-to-clip-paths-with-css! - границы*/
+
+
+.upper-part {
+    display: flex;
+    justify-content: space-between;
+}
+.profile-menu {
+    position: fixed;
+    top: 2vh;
+    right: 2vh;
+    display: flex;
+    align-items: center;
+}
+
+.nickname {
+    font-size: 2vh;
+    font-weight: bold;
+    color: #333;
+    margin-right: 1vh;
+}
+
+.sign-up-btn,
+.sign-in-btn {
+    cursor: pointer;
+    padding: 1vh 1vh;
+    background-color: #2F73B6;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 0.4vh;
+    margin-right: 1vh;
+}
+
+.sign-up-btn:hover,
+.sign-in-btn:hover {
+    background-color: #1F5B96;
 }

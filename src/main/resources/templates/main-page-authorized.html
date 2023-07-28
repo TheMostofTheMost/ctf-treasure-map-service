@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Treasure map</title>
+    <link href="/styles/main-page.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="main-container">
+
+    <div class="upper-part main-container">
+        <div class="search-container">
+            <input placeholder="Введите .. контейнера">
+        </div>
+
+        <div class="profile-menu">
+            <div class="nickname"> Чужак </div>
+            <div class="sign-up-btn"> Sign up</div>
+            <div class="sign-in-btn"> Sign in</div>
+        </div>
+    </div>
+
+    <div class="middle-container main-container">
+        <div class="hexagon-container">
+            <div class="upper-octagon-container">
+                <div class="octagon-block">
+                    <a class="octagon-containers-count" th:text="${containers.get(0)}"></a>
+                </div>
+                <div class="octagon-block">
+                    <a class="octagon-containers-count" th:text="${containers.get(1)}"></a>
+                </div>
+                <div class="octagon-block">
+                    <a class="octagon-containers-count" th:text="${containers.get(2)}"></a>
+                </div>
+            </div>
+            <div class="lower-octagon-container">
+                <div class="octagon-block">
+                    <a class="octagon-containers-count" th:text="${containers.get(3)}"></a>
+
+                </div>
+                <div class="octagon-block">
+                    <a class="octagon-containers-count" th:text="${containers.get(4)}"></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="lower-part main-container">
+        <div class="search-results">
+
+        </div>
+        <div class="add-container">
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
