@@ -12,10 +12,12 @@ public class MainController {
 
     @GetMapping("/")
     public ModelAndView getMainPage() {
-        ModelAndView modelAndView = new ModelAndView("main-page-non-authorized.html");
+//        ModelAndView modelAndView = new ModelAndView("main-page-non-authorized.html");
+        ModelAndView modelAndView = new ModelAndView("main-page-authorized.html");
         List<Integer> test = List.of(7, 4, 3, 8, 5);
         modelAndView.addObject("containers", test);
         return modelAndView;
     }
+
 
 }
