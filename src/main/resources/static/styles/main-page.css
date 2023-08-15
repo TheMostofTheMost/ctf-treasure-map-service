@@ -173,7 +173,9 @@ html {
     border-left: aliceblue;
     border-bottom: aliceblue;
     height: 100%;
+    border-top-right-radius: 1vh;
 }
+/*border-collapse: collapse;*/
 
 
 .row {
