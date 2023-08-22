@@ -14,7 +14,7 @@
         </div>
 
         <div class="profile-menu">
-            <div class="nickname"> Вставить ник </div>
+            <div class="nickname"> Вставить ник</div>
             <div class="log-out"> Log out</div>
         </div>
     </div>
@@ -22,23 +22,52 @@
     <div class="middle-container main-container">
         <div class="hexagon-container">
             <div class="upper-octagon-container">
-                <div class="octagon-background-container"><div id="first-location" class="octagon-block">
-                    <a class="octagon-containers-count" th:text="${containers.get(0)}"></a>
-                </div></div>
-                <div class="octagon-background-container"> <div id="second-location" class="octagon-block">
-                    <a class="octagon-containers-count" th:text="${containers.get(1)}"></a>
-                </div> </div>
-                <div class="octagon-background-container"> <div id="third-location" class="octagon-block">
-                    <a class="octagon-containers-count" th:text="${containers.get(2)}"></a>
-                </div></div>
+                <div class="octagon-background-container" th:name="${locations.get(0).getNameOfLocation()}">
+                    <div id="first-location" class="octagon-block">
+                        <div class="location-data-container">
+                            <a class="location-name-container" th:text="${locations.get(0).getNameOfLocation()}"></a>
+                            <a class="octagon-containers-count" th:text="${containers.get(0)}"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="octagon-background-container"
+                     th:name="${locations.get(1).getNameOfLocation()}">
+                    <div id="second-location" class="octagon-block">
+                        <div class="location-data-container">
+                            <a class="location-name-container" th:text="${locations.get(1).getNameOfLocation()}"></a>
+                            <a class="octagon-containers-count" th:text="${containers.get(1)}"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="octagon-background-container"
+                     th:name="${locations.get(2).getNameOfLocation()}">
+                    <div id="third-location" class="octagon-block">
+                        <div class="location-data-container">
+                            <a class="location-name-container" th:text="${locations.get(2).getNameOfLocation()}"></a>
+                            <a class="octagon-containers-count" th:text="${containers.get(2)}"></a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="lower-octagon-container">
-                <div class="octagon-background-container">   <div id="fourth-location" class="octagon-block">
-                    <a class="octagon-containers-count" th:text="${containers.get(3)}"></a>
-                </div></div>
-                <div class="octagon-background-container"><div id="fifth-location" class="octagon-block">
-                    <a class="octagon-containers-count" th:text="${containers.get(4)}"></a>
-                </div> </div>
+                <div class="octagon-background-container"
+                     th:name="${locations.get(3).getNameOfLocation()}">
+                    <div id="fourth-location" class="octagon-block">
+                        <div class="location-data-container">
+                            <a class="location-name-container" th:text="${locations.get(3).getNameOfLocation()}"></a>
+                            <a class="octagon-containers-count" th:text="${containers.get(3)}"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="octagon-background-container"
+                     th:name="${locations.get(4).getNameOfLocation()}">
+                    <div id="fifth-location" class="octagon-block">
+                        <div class="location-data-container">
+                            <a class="location-name-container" th:text="${locations.get(4).getNameOfLocation()}"></a>
+                            <a class="octagon-containers-count" th:text="${containers.get(4)}"></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -48,17 +77,6 @@
         <div class="search-results">
             <table class="info-table">
                 <tbody class="info-table-body">
-                <tr class="row">
-                    <th>Название</th>
-                    <th>Локация</th>
-                    <th>ID</th>
-                </tr>
-                <tr  class="row">
-                    <td>Тестовое название</td>
-                    <td>Тестовая локация</td>
-                    <td>23412-42893-4234</td>
-                </tr>
-                <tr></tr>
                 </tbody>
             </table>
 
@@ -66,7 +84,7 @@
 
         <div class="add-container">
             <input class="add-container-input" placeholder="Добавить контейнер" required>
-            <button class="add-container-btn"> + </button>
+            <button class="add-container-btn"> +</button>
         </div>
     </div>
 

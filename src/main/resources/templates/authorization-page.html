@@ -19,17 +19,16 @@
     </div>
 
     <div class="middle-container main-container">
-        <div class="hexagon-container">
-            <div class="upper-octagon-container">
-                <div class="octagon-background-container"><div id="first-location" class="octagon-block"></div></div>
-                <div class="octagon-background-container"> <div id="second-location" class="octagon-block"></div> </div>
-                <div class="octagon-background-container"> <div id="third-location" class="octagon-block"></div></div>
+        <form th:action="@{/login}" method="post">
+            <div>
+                <input type="text" name="username" placeholder="Username"/>
             </div>
-            <div class="lower-octagon-container">
-                <div class="octagon-background-container">   <div id="fourth-location" class="octagon-block"></div></div>
-                <div class="octagon-background-container"><div id="fifth-location" class="octagon-block"></div> </div>
+            <div>
+                <input type="password" name="password" placeholder="Password"/>
             </div>
-        </div>
+            <input type="submit" value="Log in"/>
+        </form>
+
     </div>
 
     <div class="lower-part main-container">

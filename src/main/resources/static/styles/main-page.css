@@ -12,7 +12,23 @@ html {
     width: 100%;
 }
 
+.location-data-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+}
+.location-name-container {
+    font-size: 3vh;
+    width: 100%;
+    color: greenyellow;
+}
 
+.octagon-containers-count {
+    width: 100%;
+    color: greenyellow;
+}
 
 .main-container {
     height: 33%;
@@ -71,17 +87,6 @@ html {
 #fifth-location {
     background-image: url('/images/5_image.jpg');
 }
-
-
-.octagon-containers-count {
-    width: 2vh;
-    height: 2vh;
-    margin-top: 0.8vh;
-    margin-right: -1.5vh;
-}
-
-/*https://www.freecodecamp.org/news/apply-borders-to-clip-paths-with-css! - границы*/
-
 
 .upper-part {
     display: flex;

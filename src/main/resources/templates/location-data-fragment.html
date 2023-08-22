@@ -1,0 +1,14 @@
+<table class="info-table">
+    <tbody class="info-table-body">
+    <tr class="row">
+        <th>Название</th>
+        <th>Локация</th>
+        <th>Автор</th>
+    </tr>
+    <tr th:each="container : ${containers}" class="row">
+        <td th:text="${container.getTreasure()}"></td>
+        <td th:text="${container.getLocationEntity().getNameOfLocation()}"></td>
+        <td th:text="${container.getAuthor()}"></td>
+    </tr>
+    </tbody>
+</table>
