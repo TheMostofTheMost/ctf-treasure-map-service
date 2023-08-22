@@ -45,8 +45,11 @@ $(document).on('click', '.add-container-btn', async function (e) {
         alert("Выберите локацию!")
     } else {
         await mainAjaxFunc("/container/save", "POST", data, {'Content-Type': 'application/json'});
-
     }
+
+    let locationData = await mainAjaxFunc("/location/data/" + getActiveLocation(),
+        "GET");
+    $('.search-results').html(locationData)
 });
 
 
