@@ -54,16 +54,6 @@ public class AuthenticateControllers {
     // TODO: Реализовать XSS
     // TODO: Придумать третью уязвимость
     // TODO:
-    @PostMapping("/login")
-    public ModelAndView auth(@RequestBody UserDto userDto) {
-        User user = userDto.fromDto(userDto);
-        ModelAndView modelAndView = new ModelAndView("main-page-authorized.html");
-        Authentication authentication = checkUserAuthNEW.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(),
-                user.getPassword()));
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        return modelAndView;
-    }
 
 
     @GetMapping("/main-page")

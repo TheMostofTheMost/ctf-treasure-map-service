@@ -32,7 +32,7 @@ public class CheckUserAuthNEW implements AuthenticationProvider {
                     authentication.getCredentials().toString(),
                     Collections.singletonList(new SimpleGrantedAuthority("ADMIN")));
         } else {
-            throw new RuntimeException("Неверный логин или пароль!");
+            return null;
         }
     }
 

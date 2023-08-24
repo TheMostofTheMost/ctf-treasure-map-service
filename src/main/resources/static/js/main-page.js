@@ -7,15 +7,15 @@ async function mainAjaxFunc(path, method, data, headers) {
     });
 }
 
-$('.sign-in-btn').on("click", function () {
-    console.log("Test")
+
+$(document).on('click', '.sign-in-btn', async function (e) {
     mainAjaxFunc("/auth-page", "GET").then(function (result) {
         $('html').html(result);
     });
 });
 
-$('.octagon-block').on("click", async function () {
 
+$(document).on('click', '.octagon-block', async function (e) {
     $('.octagon-background-container').css("background-color", "#00a5ff");
     $(this).parent().css("background-color", "#00ff9e");
 
@@ -23,7 +23,6 @@ $('.octagon-block').on("click", async function () {
         "GET");
     $('.search-results').html(locationData)
 });
-
 
 $(document).on('click', '.auth-btn', async function (e) {
     let userObject = {};
@@ -52,6 +51,12 @@ $(document).on('click', '.add-container-btn', async function (e) {
     $('.search-results').html(locationData)
 });
 
+$(document).on('click', '.log-out', async function (e) {
+    $('html').html(await mainAjaxFunc("/logout", "GET"));
+});
+$(document).on('click', '.turn-to-map', async function (e) {
+    $('html').html(await mainAjaxFunc("/", "GET"));
+});
 
 function getActiveLocation() {
     let tags = $('.octagon-background-container');

@@ -92,6 +92,9 @@ html {
     display: flex;
     justify-content: space-between;
 }
+.search-results, .add-container {
+    width: 33%;
+}
 .profile-menu {
     position: fixed;
     top: 2vh;
@@ -108,7 +111,7 @@ html {
 }
 
 .sign-up-btn,
-.sign-in-btn, .log-out {
+.sign-in-btn, .log-out, .turn-to-map {
     cursor: pointer;
     padding: 1vh 1vh;
     background-color: #2F73B6;
@@ -173,12 +176,18 @@ html {
     color: white;
 
 }
+td {
+    word-wrap: break-word;
+    text-align: center;
+}
 .info-table {
     border: 0.4vh solid #2a7096;
     border-left: aliceblue;
     border-bottom: aliceblue;
     height: 100%;
     border-top-right-radius: 1vh;
+    width: 100%;
+    table-layout: fixed;
 }
 /*border-collapse: collapse;*/
 
@@ -194,18 +203,16 @@ html {
 .add-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 34vh;
-    justify-self: center;
-    margin-left: 44vh;
+    justify-content: center;
 }
 
 .add-container input {
-    flex: 1;
     border: 0.4vh solid #2a7096;
     padding: 0.5vh;
     border-radius: 0.5vh;
     background-color: #031014;
+    width: 50%;
+    color: white;
 }
 
 .add-container button {

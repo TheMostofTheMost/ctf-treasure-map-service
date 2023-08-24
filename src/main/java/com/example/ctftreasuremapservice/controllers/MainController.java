@@ -4,11 +4,9 @@ package com.example.ctftreasuremapservice.controllers;
 import com.example.ctftreasuremapservice.manager.ContainerManager;
 import com.example.ctftreasuremapservice.model.dto.ContainerDto;
 import com.example.ctftreasuremapservice.model.entity.ContainerEntity;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.example.ctftreasuremapservice.repository.LocationRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -18,9 +16,11 @@ import java.util.List;
 @Controller
 public class MainController {
     private final ContainerManager containerManager;
+    private final LocationRepository locationRepository;
 
-    public MainController(ContainerManager containerManager) {
+    public MainController(ContainerManager containerManager, LocationRepository locationRepository) {
         this.containerManager = containerManager;
+        this.locationRepository = locationRepository;
     }
 
 
@@ -34,13 +34,13 @@ public class MainController {
         }
         List<Integer> test = List.of(7, 4, 3, 8, 5);
         modelAndView.addObject("containers", test);
+        modelAndView.addObject("locations", locationRepository.getAll());
         return modelAndView;
     }
 
     @PostMapping("/container/save")
-    public ModelAndView saveContainerToLocation(@RequestBody ContainerDto containerDto) {
+    public void saveContainerToLocation(@RequestBody ContainerDto containerDto) {
         containerManager.saveContainer(containerDto.getTreasure(), containerDto.getLocationName());
-        return null;
     }
 
     @GetMapping("/location/data/{locationName}")

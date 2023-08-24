@@ -25,12 +25,22 @@ public class TestConfigSec {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(request -> {
-                    request.requestMatchers("/main-page").authenticated();
-                    request.anyRequest().permitAll();
+                    request.requestMatchers("/").permitAll();
+                    request.requestMatchers("/js/**").permitAll();
+                    request.requestMatchers("/login").permitAll();
+                    request.requestMatchers("/location/data/**").permitAll();
+                    request.requestMatchers("/styles/**").permitAll();
+                    request.requestMatchers("/images/**").permitAll();
+                    request.requestMatchers("/auth-page").permitAll();
+                    request.requestMatchers("/container/save").permitAll();
+                    request.anyRequest().authenticated();
                 })
                 .formLogin((httpSecurityFormLoginConfigurer ->
-                {httpSecurityFormLoginConfigurer.loginProcessingUrl("/login").permitAll();
-                httpSecurityFormLoginConfigurer.defaultSuccessUrl("/main-page");}))
+                {
+                    httpSecurityFormLoginConfigurer.loginPage("/auth-page");
+                    httpSecurityFormLoginConfigurer.loginProcessingUrl("/login").permitAll();
+                    httpSecurityFormLoginConfigurer.defaultSuccessUrl("/main-page");
+                }))
                 .csrf((AbstractHttpConfigurer::disable))
                 .authenticationProvider(checkUserAuthNEW)
                 .sessionManagement((httpSecuritySessionManagementConfigurer -> {
