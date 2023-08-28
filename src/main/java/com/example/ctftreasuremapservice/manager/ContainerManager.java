@@ -30,12 +30,12 @@ public class ContainerManager {
 
     }
     public List<ContainerEntity> getContainerByLocationName(String locationName) {
-        if (SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("admin")) {
+        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
             return containerRepository.getContainerByLocationName(locationName);
         } else {
             return containerRepository.getContainerByLocationName(locationName)
                     .stream()
-                    .filter(containerEntity -> !containerEntity.getAuthor().equals("admin"))
+                    .filter(containerEntity -> containerEntity.getAuthor().contains("anonymousUser"))
                     .collect(Collectors.toList());
 
         }

@@ -126,6 +126,47 @@ html {
 .sign-in-btn:hover {
     background-color: #1F5B96;
 }
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: transparent;
+}
+
+.info-table th, .info-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid rgb(38, 123, 163);
+    border-right: 1px solid rgb(38, 123, 163);
+    color: #fff;
+}
+
+.info-table th:first-child, .info-table td:first-child {
+    border-left: 1px solid rgb(38, 123, 163);
+}
+
+.info-table th:last-child, .info-table td:last-child {
+    border-right: none;
+}
+
+.info-table th {
+    background-color: rgba(38, 123, 163, 0.7);
+}
+
+.info-table tr:hover {
+    background-color: rgba(38, 123, 163, 0.3);
+}
+
+.info-table-body {
+    font-size: 14px;
+}
+
+.info-table .row:nth-child(even) {
+    background-color: rgba(38, 123, 163, 0.2);
+}
+
+.info-table .row:nth-child(odd) {
+    background-color: rgba(38, 123, 163, 0.1);
+}
 
 
 
