@@ -12,18 +12,18 @@
         <div class="search-container">
         </div>
         <div class="profile-menu">
-            <div class="nickname"> Чужак</div>
+            <div class="nickname"> Неизвестный пират </div>
             <div class="turn-to-map"> Treasure map</div>
         </div>
     </div>
 
     <div class="middle-container main-container">
         <form th:action="@{/login}" method="post">
-            <div>
-                <input type="text" name="username" placeholder="Username"/>
-            </div>
-            <div>
-                <input type="password" name="password" placeholder="Password"/>
+            <div class="cred-container">
+
+                <input class="username-input" type="text" name="username" placeholder="Username"/>
+                <input class="password-input" type="password" name="password" placeholder="Password"/>
+
             </div>
             <input type="submit" value="Log in"/>
         </form>

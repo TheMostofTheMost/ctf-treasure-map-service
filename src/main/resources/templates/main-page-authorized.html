@@ -10,11 +10,10 @@
 
     <div class="upper-part main-container">
         <div class="search-container">
-            <input class="search-container-input" placeholder="Введите .. контейнера">
         </div>
 
         <div class="profile-menu">
-            <div class="nickname"> Вставить ник</div>
+            <div class="nickname" th:text="${user.getPrincipal()}"> Вставить ник</div>
             <div class="log-out"> Log out</div>
         </div>
     </div>
@@ -78,10 +77,13 @@
             <table class="info-table">
                 <tbody class="info-table-body">
                 <tr class="row">
-                    <th>Название</th>
+                    <th>Содержимое</th>
                     <th>Локация</th>
                     <th>Автор</th>
                 </tr>
+                <tr ></tr>
+                <tr></tr>
+
                 </tbody>
             </table>
 
