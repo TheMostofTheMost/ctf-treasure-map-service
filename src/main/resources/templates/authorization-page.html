@@ -14,11 +14,15 @@
         <div class="profile-menu">
             <div class="nickname"> Неизвестный пират </div>
             <div class="turn-to-map"> Treasure map</div>
+            <div class="turn-to-registration-btn"> Registration</div>
         </div>
     </div>
 
     <div class="middle-container main-container">
         <form th:action="@{/login}" method="post">
+            <div class="title">
+                Авторизация
+            </div>
             <div class="cred-container">
 
                 <input class="username-input" type="text" name="username" placeholder="Username"/>

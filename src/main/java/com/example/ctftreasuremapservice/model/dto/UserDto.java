@@ -10,11 +10,4 @@ import lombok.Setter;
 public class UserDto {
     private String username;
     private String password;
-
-    public User fromDto(UserDto userDto) {
-        return User.builder()
-                .username(userDto.username)
-                .password(userDto.password)
-                .build();
-    }
 }

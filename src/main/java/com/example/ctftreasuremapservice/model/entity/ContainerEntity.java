@@ -16,7 +16,6 @@ public class ContainerEntity {
     private String author;
     @ManyToOne
     private LocationEntity locationEntity;
-
     public ContainerEntity() {}
     public ContainerEntity(String treasure, String author, LocationEntity locationEntity) {
         this.id = UUID.randomUUID();

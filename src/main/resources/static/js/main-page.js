@@ -9,13 +9,13 @@ async function mainAjaxFunc(path, method, data, headers) {
 
 
 $(document).on('click', '.sign-in-btn', async function (e) {
-    mainAjaxFunc("/auth-page", "GET").then(function (result) {
-        $('html').html(result);
-    });
+    e.preventDefault();
+    window.location.href = "/auth-page";
 });
 
 
 $(document).on('click', '.octagon-block', async function (e) {
+    e.preventDefault();
     $('.octagon-background-container').css("background-color", "#00a5ff");
     $(this).parent().css("background-color", "#00ff9e");
 
@@ -24,16 +24,23 @@ $(document).on('click', '.octagon-block', async function (e) {
     $('.search-results').html(locationData)
 });
 
-$(document).on('click', '.auth-btn', async function (e) {
-    let userObject = {};
-    userObject.username = $('#username').val();
-    userObject.password = $('#password').val();
-    mainAjaxFunc("/login", "POST", JSON.stringify(userObject),
+$(document).on('click', '#registration-btn', async function (e) {
+    e.preventDefault();
+    let username = $('.username-input').eq(0).val();
+    let password = $('.password-input').eq(0).val();
+    let userObject = {
+        username: username,
+        password: password
+    };
+    mainAjaxFunc("/user/create", "POST", userObject,
         {'Content-Type': 'application/json'}).then(function (result) {
-        $('html').empty().html(result);
+        $('#text-container').empty().html(result);
+    }).catch(function (error) {
+        $('#text-container').empty().html("Ошибка: " + error.responseText);
     });
 });
 $(document).on('click', '.add-container-btn', async function (e) {
+    e.preventDefault();
     let locationName = getActiveLocation();
     let treasure = $('.add-container-input').val();
     let data = {
@@ -43,19 +50,27 @@ $(document).on('click', '.add-container-btn', async function (e) {
     if (locationName === "") {
         alert("Выберите локацию!")
     } else {
-        await mainAjaxFunc("/container/save", "POST", data, {'Content-Type': 'application/json'});
+        await mainAjaxFunc("/container/save",
+            "POST", data, {'Content-Type': 'application/json'});
     }
-
     let locationData = await mainAjaxFunc("/location/data/" + getActiveLocation(),
         "GET");
     $('.search-results').html(locationData)
 });
 
 $(document).on('click', '.log-out', async function (e) {
-    $('html').html(await mainAjaxFunc("/logout", "GET"));
+    e.preventDefault();
+    await mainAjaxFunc("/logout", "GET").then(function (response) {
+        window.location.href = "/auth-page";
+    });
+});
+$(document).on('click', '.turn-to-registration-btn', async function (e) {
+    e.preventDefault();
+    window.location.href = "/registration";
 });
 $(document).on('click', '.turn-to-map', async function (e) {
-    $('html').html(await mainAjaxFunc("/", "GET"));
+    e.preventDefault();
+    window.location.href = "/";
 });
 
 function getActiveLocation() {

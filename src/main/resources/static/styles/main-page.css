@@ -19,7 +19,9 @@ html {
     width: 100%;
     justify-content: center;
 }
+
 .location-name-container {
+    font-family: cursive;
     font-size: 3vh;
     width: 100%;
     color: greenyellow;
@@ -39,14 +41,17 @@ html {
     display: flex;
     justify-content: center;
 }
+
 .upper-octagon-container {
     display: flex;
 }
+
 .lower-octagon-container {
     display: flex;
     margin-left: 12.5vh;
     margin-top: -5.7vh;
 }
+
 .octagon-block {
     background-size: cover;
     cursor: pointer;
@@ -54,7 +59,7 @@ html {
     height: 25vh;
     color: #fff;
     text-align: center;
-    clip-path: polygon( 50% 2%, 98% 25%, 98% 75%, 50% 98%, 2% 75%, 2% 25%);
+    clip-path: polygon(50% 2%, 98% 25%, 98% 75%, 50% 98%, 2% 75%, 2% 25%);
     display: flex;
     justify-content: end;
 }
@@ -66,7 +71,7 @@ html {
     height: 25vh;
     color: #fff;
     text-align: center;
-    clip-path: polygon( 50% 1%, 99% 25%, 99% 75%, 50% 99%, 1% 75%, 1% 25% );
+    clip-path: polygon(50% 1%, 99% 25%, 99% 75%, 50% 99%, 1% 75%, 1% 25%);
     display: flex;
     justify-content: end;
     background-color: #00a5ff;
@@ -75,26 +80,43 @@ html {
 #first-location {
     background-image: url('/images/1_image.jpg');
 }
+
 #second-location {
     background-image: url('/images/2_image.jpg');
 }
+
 #third-location {
     background-image: url('/images/3_image.jpg');
 }
+
 #fourth-location {
     background-image: url('/images/4_image.jpg');
 }
+
 #fifth-location {
     background-image: url('/images/5_image.jpg');
 }
 
 .upper-part {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
 }
+.main-title {
+    font-family: cursive;
+    color: rgb(41, 181, 158);
+    justify-self: center;
+    margin-top: -9vh;
+    font-size: 8vh;
+    -webkit-text-stroke: 0.3vh #2F73B6;
+}
+
 .search-results, .add-container {
     width: 33%;
 }
+
+.search-results {
+    overflow-y: scroll;
+}
+
 .profile-menu {
     position: fixed;
     top: 2vh;
@@ -104,14 +126,14 @@ html {
 }
 
 .nickname {
-    font-size: 2vh;
+    font-size: 2.5vh;
     font-weight: bold;
     color: rgb(41, 181, 158);
     margin-right: 1vh;
 }
 
 .sign-up-btn,
-.sign-in-btn, .log-out, .turn-to-map {
+.sign-in-btn, .log-out, .turn-to-map, .turn-to-registration-btn {
     cursor: pointer;
     padding: 1vh 1vh;
     background-color: #2F73B6;
@@ -122,10 +144,15 @@ html {
     margin-right: 1vh;
 }
 
+#text-container {
+    color: rgb(41, 181, 158);
+}
+
 .sign-up-btn:hover,
 .sign-in-btn:hover {
     background-color: #1F5B96;
 }
+
 .info-table {
     width: 100%;
     border-collapse: collapse;
@@ -169,8 +196,6 @@ html {
 }
 
 
-
-
 .authentication-form {
     width: 25%;
     display: grid;
@@ -191,7 +216,7 @@ html {
 }
 
 
-.credentials-name,.auth-btn {
+.credentials-name, .auth-btn {
     font-size: 2vh;
 }
 
@@ -232,24 +257,32 @@ td {
     width: 100%;
     table-layout: fixed;
 }
+
 /*border-collapse: collapse;*/
 
 
 .row {
     height: 3vh;
 }
-.lower-part{
+
+.lower-part {
     display: flex;
 }
-form {
-    width: 25%;
-    height: 80%;
-    background-color: cornflowerblue;
+
+form, .registration-form {
+    width: 30%;
+    height: 110%;
+    border: solid rgb(41, 181, 158);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     border-radius: 1vh;
+}
+
+.title {
+    font-size: 3vh;
+    color: rgb(41, 181, 158);
 }
 
 input[type="text"],
@@ -259,13 +292,13 @@ input[type="password"] {
     margin-bottom: 1vh;
 }
 
-input[type="submit"] {
+input[type="submit"], #registration-btn {
     height: 3vh;
     margin-bottom: 1vh;
     border: none;
     border-radius: 1vh;
     background-color: white;
-    color: cornflowerblue;
+    color: rgb(41, 181, 158);
     font-weight: bold;
     cursor: pointer;
 }
@@ -295,10 +328,6 @@ input[type="submit"] {
     margin-left: 0.4vh
 }
 
-
-
-/*border: 2px solid red;*/
-/*border-left: aliceblue;*/
-/*border-bottom: aliceblue;*/
-/*background-color: #00a5ff;*/
-/*background-color: #00ff9e;*/
+* {
+    font-family: cursive;
+}

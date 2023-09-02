@@ -1,16 +1,30 @@
 package com.example.ctftreasuremapservice.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.UUID;
 
 
-@Table(name = "user_tabel")
+@Table(name = "user_table")
 @Entity
+@Getter
+@Setter
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    private String name;
+    private String username;
     private String password;
+    private boolean isAdmin;
+    public UserEntity(UUID id, String name, String password) {
+        this.id = id;
+        this.username = name;
+        this.password = password;
+        this.isAdmin = false;
+    }
+    public UserEntity() {}
 }

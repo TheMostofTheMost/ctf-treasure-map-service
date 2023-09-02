@@ -1,36 +1,62 @@
-//package com.example.ctftreasuremapservice.security;
-//
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.http.HttpStatus;
-//import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-//import org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-//import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
-//import org.springframework.security.web.SecurityFilterChain;
-//import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
-//
-//@Configuration
-//@EnableWebSecurity
-//public class SecurityConfiguration {
-//
-//    @Bean
-//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http.csrf().disable()
-//                .authorizeHttpRequests(requests -> requests
-//                        .anyRequest().permitAll()
-//                )
-//                .formLogin(form -> form
-//                        .loginPage("/login")
-//                        .permitAll()
-//                )
-//                .logout(LogoutConfigurer::permitAll)
-//                .logout()
-//                .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.OK))
-//                .invalidateHttpSession(true)
-//                .clearAuthentication(true);
-//        return http.build();
-//    }
-//
-//}
+package com.example.ctftreasuremapservice.security;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
+
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfiguration {
+
+    private final AuthenticationService authenticationService;
+
+    public SecurityConfiguration(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
+    }
+
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(request -> {
+                    request.requestMatchers("/").permitAll();
+                    request.requestMatchers("/js/**").permitAll();
+                    request.requestMatchers("/login").permitAll();
+                    request.requestMatchers("/location/data/**").permitAll();
+                    request.requestMatchers("/styles/**").permitAll();
+                    request.requestMatchers("/images/**").permitAll();
+                    request.requestMatchers("/auth-page").permitAll();
+                    request.requestMatchers("/registration").permitAll();
+                    request.requestMatchers("/user/create").permitAll();
+                    request.requestMatchers("/container/save").permitAll();
+                    request.anyRequest().authenticated();
+                })
+                .formLogin((httpSecurityFormLoginConfigurer ->
+                {
+                    httpSecurityFormLoginConfigurer.loginPage("/auth-page");
+                    httpSecurityFormLoginConfigurer.loginProcessingUrl("/login").permitAll();
+                    httpSecurityFormLoginConfigurer.defaultSuccessUrl("/main-page");
+                }))
+                .csrf((AbstractHttpConfigurer::disable))
+                .authenticationProvider(authenticationService)
+                .sessionManagement((httpSecuritySessionManagementConfigurer -> {
+                    httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
+                    httpSecuritySessionManagementConfigurer.sessionFixation().migrateSession();
+                }));
+
+        return http.build();
+    }
+
+
+    @Bean
+    public HttpSessionEventPublisher httpSessionEventPublisher() {
+        return new HttpSessionEventPublisher();
+    }
+
+
+}

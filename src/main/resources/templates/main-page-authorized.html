@@ -12,6 +12,10 @@
         <div class="search-container">
         </div>
 
+        <div class="main-title">
+            Treasure Map
+        </div>
+
         <div class="profile-menu">
             <div class="nickname" th:text="${user.getPrincipal()}"> Вставить ник</div>
             <div class="log-out"> Log out</div>
@@ -25,7 +29,6 @@
                     <div id="first-location" class="octagon-block">
                         <div class="location-data-container">
                             <a class="location-name-container" th:text="${locations.get(0).getNameOfLocation()}"></a>
-                            <a class="octagon-containers-count" th:text="${containers.get(0)}"></a>
                         </div>
                     </div>
                 </div>
@@ -34,7 +37,6 @@
                     <div id="second-location" class="octagon-block">
                         <div class="location-data-container">
                             <a class="location-name-container" th:text="${locations.get(1).getNameOfLocation()}"></a>
-                            <a class="octagon-containers-count" th:text="${containers.get(1)}"></a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +45,6 @@
                     <div id="third-location" class="octagon-block">
                         <div class="location-data-container">
                             <a class="location-name-container" th:text="${locations.get(2).getNameOfLocation()}"></a>
-                            <a class="octagon-containers-count" th:text="${containers.get(2)}"></a>
                         </div>
                     </div>
                 </div>
@@ -54,7 +55,6 @@
                     <div id="fourth-location" class="octagon-block">
                         <div class="location-data-container">
                             <a class="location-name-container" th:text="${locations.get(3).getNameOfLocation()}"></a>
-                            <a class="octagon-containers-count" th:text="${containers.get(3)}"></a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,6 @@
                     <div id="fifth-location" class="octagon-block">
                         <div class="location-data-container">
                             <a class="location-name-container" th:text="${locations.get(4).getNameOfLocation()}"></a>
-                            <a class="octagon-containers-count" th:text="${containers.get(4)}"></a>
                         </div>
                     </div>
                 </div>
@@ -91,7 +90,7 @@
 
         <div class="add-container">
             <input class="add-container-input" placeholder="Добавить контейнер" required>
-            <button class="add-container-btn"> +</button>
+            <button class="add-container-btn" type="submit"> +</button>
         </div>
         <div style="width: 33%"></div>
     </div>

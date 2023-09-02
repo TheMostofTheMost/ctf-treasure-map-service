@@ -2,7 +2,6 @@ package com.example.ctftreasuremapservice.manager;
 
 import com.example.ctftreasuremapservice.model.entity.ContainerEntity;
 import com.example.ctftreasuremapservice.repository.ContainerRepository;
-import com.example.ctftreasuremapservice.repository.LocationRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +12,13 @@ import java.util.stream.Collectors;
 public class ContainerManager {
 
     private final ContainerRepository containerRepository;
-    private final LocationRepository locationRepository;
+    private final LocationManager locationManager;
+    private final UserManager userManager;
 
-    public ContainerManager(ContainerRepository containerRepository, LocationRepository locationRepository) {
+    public ContainerManager(ContainerRepository containerRepository, LocationManager locationManager, UserManager userManager) {
         this.containerRepository = containerRepository;
-        this.locationRepository = locationRepository;
+        this.locationManager = locationManager;
+        this.userManager = userManager;
     }
 
     public void saveContainer(String treasure, String nameOfLocation) {
@@ -25,19 +26,16 @@ public class ContainerManager {
         ContainerEntity newContainer = new ContainerEntity(
                 treasure,
                 author,
-                locationRepository.getByName(nameOfLocation));
+                locationManager.getByName(nameOfLocation));
         containerRepository.save(newContainer);
 
     }
-    public List<ContainerEntity> getContainerByLocationName(String locationName) {
-        if (!SecurityContextHolder.getContext().getAuthentication().getPrincipal().equals("anonymousUser")) {
-            return containerRepository.getContainerByLocationName(locationName);
+    public List<ContainerEntity> getContainersByLocationName(String locationName) {
+        if (userManager.isAdmin()) {
+            return containerRepository.getAll();
         } else {
-            return containerRepository.getContainerByLocationName(locationName)
-                    .stream()
-                    .filter(containerEntity -> containerEntity.getAuthor().contains("anonymousUser"))
-                    .collect(Collectors.toList());
-
+            return containerRepository.getContainerByLocationNaAndAuthor(locationName,
+                    SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
         }
     }
 
