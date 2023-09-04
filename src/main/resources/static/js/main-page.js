@@ -1,6 +1,6 @@
 async function mainAjaxFunc(path, method, data, headers) {
     return $.ajax({
-        url: "http://localhost:8080" + path,
+        url: "http://localhost:4000" + path,
         method: method,
         data: JSON.stringify(data),
         headers: headers

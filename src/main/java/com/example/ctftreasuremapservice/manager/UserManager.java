@@ -22,14 +22,19 @@ public class UserManager {
     }
 
     public void save(User user) {
-        if (userRepository.getUserByUsername(user.getUsername()).isPresent()) {
-            throw new UserAlreadyExistException("Пользователь с таким именем уже существует");
-        } else {
-            userRepository.save(
-                    new UserEntity(user.getId(),
-                    user.getUsername(),
-                    user.getPassword()));
+        try {
+            if (userRepository.getUserByUsername(user.getUsername()).isPresent()) {
+                throw new UserAlreadyExistException("Пользователь с таким именем уже существует");
+            } else {
+                userRepository.save(
+                        new UserEntity(user.getId(),
+                                user.getUsername(),
+                                user.getPassword()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
     }
 
     public User fromDto(UserDto userDto) {
