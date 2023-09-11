@@ -2,7 +2,6 @@ package com.example.ctftreasuremapservice.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.UUID;
 
@@ -16,7 +15,10 @@ public class ContainerEntity {
     private String author;
     @ManyToOne
     private LocationEntity locationEntity;
-    public ContainerEntity() {}
+
+    public ContainerEntity() {
+    }
+
     public ContainerEntity(String treasure, String author, LocationEntity locationEntity) {
         this.id = UUID.randomUUID();
         this.treasure = treasure;

@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -20,11 +18,14 @@ public class UserEntity {
     private String username;
     private String password;
     private boolean isAdmin;
+
     public UserEntity(UUID id, String name, String password) {
         this.id = id;
         this.username = name;
         this.password = password;
         this.isAdmin = false;
     }
-    public UserEntity() {}
+
+    public UserEntity() {
+    }
 }

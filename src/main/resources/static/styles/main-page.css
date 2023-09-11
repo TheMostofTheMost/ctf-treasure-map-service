@@ -2,7 +2,7 @@ html {
     background-size: cover;
     height: 100%;
     width: 100%;
-    background-image: url('/images/map-background.jpg');
+    background-image: url('/image/map-background.jpg');
 }
 
 #main-container {
@@ -78,28 +78,29 @@ html {
 }
 
 #first-location {
-    background-image: url('/images/1_image.jpg');
+    background-image: url('/image/1_image.jpg');
 }
 
 #second-location {
-    background-image: url('/images/2_image.jpg');
+    background-image: url('/image/2_image.jpg');
 }
 
 #third-location {
-    background-image: url('/images/3_image.jpg');
+    background-image: url('/image/3_image.jpg');
 }
 
 #fourth-location {
-    background-image: url('/images/4_image.jpg');
+    background-image: url('/image/4_image.jpg');
 }
 
 #fifth-location {
-    background-image: url('/images/5_image.jpg');
+    background-image: url('/image/5_image.jpg');
 }
 
 .upper-part {
     display: grid;
 }
+
 .main-title {
     font-family: cursive;
     color: rgb(41, 181, 158);

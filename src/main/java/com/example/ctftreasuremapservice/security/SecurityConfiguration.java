@@ -29,7 +29,7 @@ public class SecurityConfiguration {
                     request.requestMatchers("/login").permitAll();
                     request.requestMatchers("/location/data/**").permitAll();
                     request.requestMatchers("/styles/**").permitAll();
-                    request.requestMatchers("/images/**").permitAll();
+                    request.requestMatchers("/image/**").permitAll();
                     request.requestMatchers("/auth-page").permitAll();
                     request.requestMatchers("/registration").permitAll();
                     request.requestMatchers("/user/create").permitAll();

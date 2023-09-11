@@ -10,6 +10,7 @@ import java.util.List;
 public class LocationManager {
 
     private final LocationRepository locationRepository;
+
     public LocationManager(LocationRepository locationRepository) {
         this.locationRepository = locationRepository;
     }

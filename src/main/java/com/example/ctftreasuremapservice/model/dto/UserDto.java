@@ -1,7 +1,6 @@
 package com.example.ctftreasuremapservice.model.dto;
 
 
-import com.example.ctftreasuremapservice.model.pojo.User;
 import lombok.Getter;
 import lombok.Setter;
 

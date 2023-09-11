@@ -5,6 +5,7 @@ services:
     image: 'docker-spring-boot-postgres:latest'
     build:
       context: .
+      dockerfile: Dockerfile
     ports:
       - 4000:4000
     container_name: app
@@ -14,6 +15,10 @@ services:
   db:
     image: 'postgres:13'
     container_name: db
+    volumes:
+      - ./data:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=compose-postgres
       - POSTGRES_PASSWORD=compose-postgres
+volumes:
+  data:

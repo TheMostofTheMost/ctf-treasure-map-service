@@ -13,6 +13,7 @@ public
 interface LocationRepository extends JpaRepository<LocationEntity, String> {
     @Query("select location from LocationEntity location")
     List<LocationEntity> getAll();
+
     @Query("select location from LocationEntity location where location.nameOfLocation=:name")
     LocationEntity getByName(String name);
 }

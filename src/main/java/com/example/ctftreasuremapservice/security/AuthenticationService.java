@@ -10,9 +10,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -31,20 +28,22 @@ public class AuthenticationService implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        logger.info("[" + LocalDate.now() + "]" + "[INFO] from " + Utils.getRequestRemoteAddr() + " /login > [AUTH] [LOGIN] ");
         String userExistCheckSqlRequest = "SELECT * FROM user_table WHERE username ='" + authentication.getName()
                 + "' AND password ='" + authentication.getCredentials().toString() + "'";
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(userExistCheckSqlRequest);
 
         if (!rows.isEmpty() && (boolean) rows.get(0).get("is_admin")) {
+            logger.info("[" + LocalDate.now() + "]" + "[INFO] from " + Utils.getRequestRemoteAddr() + " with username = " + authentication.getName() + " and password =" + authentication.getCredentials() + " /login > [AUTH] [LOGIN] [ADMIN]");
             return new UsernamePasswordAuthenticationToken(authentication.getName(),
                     authentication.getCredentials().toString(),
                     Collections.singletonList(new SimpleGrantedAuthority("ADMIN")));
         } else if (!rows.isEmpty()) {
+            logger.info("[" + LocalDate.now() + "]" + "[INFO] from " + Utils.getRequestRemoteAddr() + " with username = " + authentication.getName() + " and password =" + authentication.getCredentials() + " /login > [AUTH] [LOGIN] [USER]");
             return new UsernamePasswordAuthenticationToken(authentication.getName(),
                     authentication.getCredentials().toString(),
                     Collections.singletonList(new SimpleGrantedAuthority("USER")));
         } else {
+            logger.warn("[" + LocalDate.now() + "]" + "[WARNING] from " + Utils.getRequestRemoteAddr() + " with username = " + authentication.getName() + " and password =" + authentication.getCredentials() + " /login > [AUTH] [LOGIN] [UNKNOWN USER]");
             return null;
         }
     }

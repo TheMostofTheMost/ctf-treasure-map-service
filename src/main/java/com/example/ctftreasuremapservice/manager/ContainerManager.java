@@ -6,7 +6,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ContainerManager {
@@ -30,6 +29,7 @@ public class ContainerManager {
         containerRepository.save(newContainer);
 
     }
+
     public List<ContainerEntity> getContainersByLocationName(String locationName) {
         if (userManager.isAdmin()) {
             return containerRepository.getAll();
