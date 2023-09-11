@@ -1,6 +1,6 @@
 async function mainAjaxFunc(path, method, data, headers) {
     return $.ajax({
-        url: "http://localhost:4000" + path,
+        url: window.location + path,
         method: method,
         data: JSON.stringify(data),
         headers: headers
@@ -19,7 +19,7 @@ $(document).on('click', '.octagon-block', async function (e) {
     $('.octagon-background-container').css("background-color", "#00a5ff");
     $(this).parent().css("background-color", "#00ff9e");
 
-    let locationData = await mainAjaxFunc("/location/data/" + getActiveLocation(),
+    let locationData = await mainAjaxFunc("location/data/" + getActiveLocation(),
         "GET");
     $('.search-results').html(locationData)
 });
@@ -50,17 +50,17 @@ $(document).on('click', '.add-container-btn', async function (e) {
     if (locationName === "") {
         alert("Выберите локацию!")
     } else {
-        await mainAjaxFunc("/container/save",
+        await mainAjaxFunc("container/save",
             "POST", data, {'Content-Type': 'application/json'});
     }
-    let locationData = await mainAjaxFunc("/location/data/" + getActiveLocation(),
+    let locationData = await mainAjaxFunc("location/data/" + getActiveLocation(),
         "GET");
     $('.search-results').html(locationData)
 });
 
 $(document).on('click', '.log-out', async function (e) {
     e.preventDefault();
-    await mainAjaxFunc("/logout", "GET").then(function (response) {
+    await mainAjaxFunc("logout", "GET").then(function (response) {
         window.location.href = "/auth-page";
     });
 });

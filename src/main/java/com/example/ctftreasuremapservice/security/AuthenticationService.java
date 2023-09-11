@@ -33,17 +33,17 @@ public class AuthenticationService implements AuthenticationProvider {
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(userExistCheckSqlRequest);
 
         if (!rows.isEmpty() && (boolean) rows.get(0).get("is_admin")) {
-            logger.info("[" + LocalDate.now() + "]" + "[INFO] from " + Utils.getRequestRemoteAddr() + " with username = " + authentication.getName() + " and password =" + authentication.getCredentials() + " /login > [AUTH] [LOGIN] [ADMIN]");
+            logger.info("[" + LocalDate.now() + "]" + " [INFO] from " + Utils.getRequestRemoteAddr() + " with username = " + authentication.getName() + " and password =" + authentication.getCredentials() + " /login > [AUTH] [LOGIN] [ADMIN]");
             return new UsernamePasswordAuthenticationToken(authentication.getName(),
                     authentication.getCredentials().toString(),
                     Collections.singletonList(new SimpleGrantedAuthority("ADMIN")));
         } else if (!rows.isEmpty()) {
-            logger.info("[" + LocalDate.now() + "]" + "[INFO] from " + Utils.getRequestRemoteAddr() + " with username = " + authentication.getName() + " and password =" + authentication.getCredentials() + " /login > [AUTH] [LOGIN] [USER]");
+            logger.info("[" + LocalDate.now() + "]" + " [INFO] from " + Utils.getRequestRemoteAddr() + " with username = " + authentication.getName() + " and password =" + authentication.getCredentials() + " /login > [AUTH] [LOGIN] [USER]");
             return new UsernamePasswordAuthenticationToken(authentication.getName(),
                     authentication.getCredentials().toString(),
                     Collections.singletonList(new SimpleGrantedAuthority("USER")));
         } else {
-            logger.warn("[" + LocalDate.now() + "]" + "[WARNING] from " + Utils.getRequestRemoteAddr() + " with username = " + authentication.getName() + " and password =" + authentication.getCredentials() + " /login > [AUTH] [LOGIN] [UNKNOWN USER]");
+            logger.warn("[" + LocalDate.now() + "]" + " [WARNING] from " + Utils.getRequestRemoteAddr() + " with username = " + authentication.getName() + " and password =" + authentication.getCredentials() + " /login > [AUTH] [LOGIN] [UNKNOWN USER]");
             return null;
         }
     }

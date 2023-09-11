@@ -1,4 +1,4 @@
-package com.example.ctftreasuremapservice.model.entity;
+package com.example.ctftreasuremapservice.ExceptionHandler.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

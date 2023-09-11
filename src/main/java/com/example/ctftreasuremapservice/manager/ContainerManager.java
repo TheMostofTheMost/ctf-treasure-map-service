@@ -1,6 +1,6 @@
 package com.example.ctftreasuremapservice.manager;
 
-import com.example.ctftreasuremapservice.model.entity.ContainerEntity;
+import com.example.ctftreasuremapservice.ExceptionHandler.entity.ContainerEntity;
 import com.example.ctftreasuremapservice.repository.ContainerRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -32,9 +32,9 @@ public class ContainerManager {
 
     public List<ContainerEntity> getContainersByLocationName(String locationName) {
         if (userManager.isAdmin()) {
-            return containerRepository.getAll();
+            return containerRepository.getAllByLocationName(locationName);
         } else {
-            return containerRepository.getContainerByLocationNaAndAuthor(locationName,
+            return containerRepository.getContainerByLocationNameAndAuthor(locationName,
                     SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
         }
     }

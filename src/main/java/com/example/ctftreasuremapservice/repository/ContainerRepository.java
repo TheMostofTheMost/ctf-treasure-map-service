@@ -1,6 +1,6 @@
 package com.example.ctftreasuremapservice.repository;
 
-import com.example.ctftreasuremapservice.model.entity.ContainerEntity;
+import com.example.ctftreasuremapservice.ExceptionHandler.entity.ContainerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,8 +14,8 @@ interface ContainerRepository extends JpaRepository<ContainerEntity, String> {
     ContainerEntity save(ContainerEntity containerEntity);
 
     @Query("select container from ContainerEntity container where container.locationEntity.nameOfLocation=:locationName and container.author=:author")
-    List<ContainerEntity> getContainerByLocationNaAndAuthor(String locationName, String author);
+    List<ContainerEntity> getContainerByLocationNameAndAuthor(String locationName, String author);
 
-    @Query("select container from ContainerEntity container")
-    List<ContainerEntity> getAll();
+    @Query("select container from ContainerEntity container where container.locationEntity.nameOfLocation=:locationName")
+    List<ContainerEntity> getAllByLocationName(String locationName);
 }

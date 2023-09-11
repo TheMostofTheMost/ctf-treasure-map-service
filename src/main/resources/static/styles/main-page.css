@@ -1,6 +1,6 @@
 html {
     background-size: cover;
-    height: 100%;
+    height: 98.9vh;
     width: 100%;
     background-image: url('/image/map-background.jpg');
 }
@@ -322,11 +322,13 @@ input[type="submit"], #registration-btn {
 .add-container button {
     background-color: #031014;
     color: #fff;
-    border: 0.1vh solid #2a7096;
+    border: 0.4vh solid #2a7096;
     padding: 0.3vh 1vh;
     cursor: pointer;
     border-radius: 0.5vh;
-    margin-left: 0.4vh
+    margin-left: 0.4vh;
+    height: 4.1vh;
+    width: 4.1vh;
 }
 
 * {

@@ -1,6 +1,7 @@
 package com.example.ctftreasuremapservice.controllers;
 
 
+import com.example.ctftreasuremapservice.ExceptionHandler.entity.LocationEntity;
 import com.example.ctftreasuremapservice.manager.ContainerManager;
 import com.example.ctftreasuremapservice.manager.LocationManager;
 import com.example.ctftreasuremapservice.manager.UserManager;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -84,8 +86,11 @@ public class MainController {
     public ModelAndView getMainPage() {
         ModelAndView modelAndView = new ModelAndView("main-page-authorized.html");
         try {
-            modelAndView.addObject("locations", locationManager.getAll());
+            List<LocationEntity> locations = locationManager.getAll();
+            modelAndView.addObject("locations", locations);
             modelAndView.addObject("user", SecurityContextHolder.getContext().getAuthentication());
+            modelAndView.addObject("locationData",
+                    containerManager.getContainersByLocationName(locations.get(0).getNameOfLocation()));
         } catch (Exception e) {
             logger.error("[" + LocalDate.now() + "]" + "[ERROR] from " + Utils.getRequestRemoteAddr() + " with username = " + SecurityContextHolder.getContext().getAuthentication().getPrincipal() + " /main-page > [MainController] [ERROR]");
         }
@@ -98,13 +103,13 @@ public class MainController {
         return new ModelAndView("registration-page.html");
     }
 
-    @PostMapping("/user/create")
+    @PostMapping("/registration/user/create")
     public ResponseEntity<String> userCreate(@RequestBody UserDto userDto) {
         try {
             User user = userManager.fromDto(userDto);
             userManager.save(user);
         } catch (Exception e) {
-            logger.error("[" + LocalDate.now() + "]" + "[ERROR] from " + Utils.getRequestRemoteAddr() + " with username = " + SecurityContextHolder.getContext().getAuthentication().getPrincipal() + " /user/create > [MainController] [ERROR]");
+            logger.error("[" + LocalDate.now() + "]" + "[ERROR] from " + Utils.getRequestRemoteAddr() + " with username = " + SecurityContextHolder.getContext().getAuthentication().getPrincipal() + "/registration/user/create > [MainController] [ERROR]");
         }
         logger.info("[" + LocalDate.now() + "]" + "[INFO] from " + Utils.getRequestRemoteAddr() + " with username = " + SecurityContextHolder.getContext().getAuthentication().getPrincipal() + " /user/create > [MainController] [SUCCESS]");
         return new ResponseEntity<>("Пользователь успешно создан!",

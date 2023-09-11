@@ -2,7 +2,7 @@ package com.example.ctftreasuremapservice.manager;
 
 import com.example.ctftreasuremapservice.Exception.UserAlreadyExistException;
 import com.example.ctftreasuremapservice.model.dto.UserDto;
-import com.example.ctftreasuremapservice.model.entity.UserEntity;
+import com.example.ctftreasuremapservice.ExceptionHandler.entity.UserEntity;
 import com.example.ctftreasuremapservice.model.pojo.User;
 import com.example.ctftreasuremapservice.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;

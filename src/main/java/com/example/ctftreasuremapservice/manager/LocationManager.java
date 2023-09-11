@@ -1,6 +1,6 @@
 package com.example.ctftreasuremapservice.manager;
 
-import com.example.ctftreasuremapservice.model.entity.LocationEntity;
+import com.example.ctftreasuremapservice.ExceptionHandler.entity.LocationEntity;
 import com.example.ctftreasuremapservice.repository.LocationRepository;
 import org.springframework.stereotype.Service;
 
