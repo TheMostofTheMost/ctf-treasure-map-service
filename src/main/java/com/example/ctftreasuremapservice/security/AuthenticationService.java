@@ -20,7 +20,8 @@ import java.util.Map;
 @Configuration
 public class AuthenticationService implements AuthenticationProvider {
     private final JdbcTemplate jdbcTemplate;
-    private final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
+    private final Logger logger = LoggerFactory.getLogger("authentication-controller");
+
 
     public AuthenticationService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

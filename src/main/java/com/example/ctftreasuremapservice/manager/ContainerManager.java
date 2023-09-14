@@ -1,6 +1,6 @@
 package com.example.ctftreasuremapservice.manager;
 
-import com.example.ctftreasuremapservice.ExceptionHandler.entity.ContainerEntity;
+import com.example.ctftreasuremapservice.entity.ContainerEntity;
 import com.example.ctftreasuremapservice.repository.ContainerRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;

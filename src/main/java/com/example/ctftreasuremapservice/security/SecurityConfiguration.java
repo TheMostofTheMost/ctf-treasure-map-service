@@ -39,8 +39,8 @@ public class SecurityConfiguration {
                 .formLogin((httpSecurityFormLoginConfigurer ->
                 {
                     httpSecurityFormLoginConfigurer.loginPage("/auth-page");
-                    httpSecurityFormLoginConfigurer.loginProcessingUrl("/login").permitAll();
                     httpSecurityFormLoginConfigurer.defaultSuccessUrl("/main-page");
+                    httpSecurityFormLoginConfigurer.loginProcessingUrl("/login").permitAll();
                 }))
                 .csrf((AbstractHttpConfigurer::disable))
                 .authenticationProvider(authenticationService)

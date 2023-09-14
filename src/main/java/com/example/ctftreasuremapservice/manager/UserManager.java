@@ -1,10 +1,12 @@
 package com.example.ctftreasuremapservice.manager;
 
-import com.example.ctftreasuremapservice.Exception.UserAlreadyExistException;
+import com.example.ctftreasuremapservice.entity.UserEntity;
+import com.example.ctftreasuremapservice.exception.BadCredentialsFormatException;
+import com.example.ctftreasuremapservice.exception.UserAlreadyExistException;
 import com.example.ctftreasuremapservice.model.dto.UserDto;
-import com.example.ctftreasuremapservice.ExceptionHandler.entity.UserEntity;
 import com.example.ctftreasuremapservice.model.pojo.User;
 import com.example.ctftreasuremapservice.repository.UserRepository;
+import com.example.ctftreasuremapservice.utils.Utils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ public class UserManager {
 
     public void save(User user) {
         try {
+            Utils.checkCredentials(user);
             if (userRepository.getUserByUsername(user.getUsername()).isPresent()) {
                 throw new UserAlreadyExistException("Пользователь с таким именем уже существует");
             } else {
@@ -30,8 +33,10 @@ public class UserManager {
                                 user.getUsername(),
                                 user.getPassword()));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (UserAlreadyExistException e) {
+            throw new UserAlreadyExistException(e.getMessage());
+        } catch (BadCredentialsFormatException e) {
+            throw new BadCredentialsFormatException(e.getMessage());
         }
 
     }

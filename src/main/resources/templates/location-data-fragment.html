@@ -1,9 +1,9 @@
 <table class="info-table">
     <tbody class="info-table-body">
     <tr class="row">
-        <th>Содержимое</th>
-        <th>Локация</th>
-        <th>Автор</th>
+        <th>Treasure</th>
+        <th>Location</th>
+        <th>Corsair</th>
     </tr>
     <tr th:each="container : ${containers}" class="row">
         <td th:utext="${container.getTreasure()}"></td>

@@ -1,7 +1,7 @@
 package com.example.ctftreasuremapservice.repository;
 
 
-import com.example.ctftreasuremapservice.ExceptionHandler.entity.LocationEntity;
+import com.example.ctftreasuremapservice.entity.LocationEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
