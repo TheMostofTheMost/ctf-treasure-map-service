@@ -62,9 +62,18 @@ public class BaseController {
         return new ModelAndView("registration-page.html");
     }
 
+    @GetMapping("/registration/fragment")
+    public ModelAndView getRegistrationFragment() {
+        return new ModelAndView("registration-page-fragment.html");
+    }
+
     @GetMapping("/auth-page")
-    public ModelAndView getAuthForm() {
+    public ModelAndView getAuthPage() {
         return new ModelAndView("authorization-page.html");
+    }
+    @GetMapping("/auth-page/fragment")
+    public ModelAndView getAuthFragment() {
+        return new ModelAndView("authorization-page-fragment.html");
     }
 
     @GetMapping("/main-page")

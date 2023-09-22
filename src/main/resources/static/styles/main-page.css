@@ -3,6 +3,8 @@ html {
     height: 98.9vh;
     width: 100%;
     background-image: url('/image/map-background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 #main-container {

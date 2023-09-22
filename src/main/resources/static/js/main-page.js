@@ -10,12 +10,17 @@ async function mainAjaxFunc(path, method, data, headers) {
 
 $(document).on('click', '.sign-in-btn', async function (e) {
     e.preventDefault();
-    window.location.href = "/auth-page";
+    e.stopPropagation();
+    mainAjaxFunc("/auth-page/fragment", "GET").then(function (result) {
+        $('body').html(result);
+        window.history.pushState(null, "", "/auth-page");
+    })
 });
 
 
 $(document).on('click', '.octagon-block', async function (e) {
     e.preventDefault();
+    e.stopPropagation();
     $('.octagon-background-container').css("background-color", "#00a5ff");
     $(this).parent().css("background-color", "#00ff9e");
 
@@ -26,6 +31,7 @@ $(document).on('click', '.octagon-block', async function (e) {
 
 $(document).on('click', '#registration-btn', async function (e) {
     e.preventDefault();
+    e.stopPropagation();
     let username = $('.username-input').eq(0).val();
     let password = $('.password-input').eq(0).val();
     let userObject = {
@@ -41,6 +47,7 @@ $(document).on('click', '#registration-btn', async function (e) {
 });
 $(document).on('click', '.add-container-btn', async function (e) {
     e.preventDefault();
+    e.stopPropagation();
     let locationName = getActiveLocation();
     let treasure = $('.add-container-input').val();
     let data = {
@@ -60,16 +67,25 @@ $(document).on('click', '.add-container-btn', async function (e) {
 
 $(document).on('click', '.log-out', async function (e) {
     e.preventDefault();
+    e.stopPropagation();
     await mainAjaxFunc("/logout", "GET").then(function () {
-        window.location.href = "/auth-page";
+        mainAjaxFunc("/auth-page/fragment", "GET").then(function (result) {
+            $('body').html(result);
+            window.history.pushState(null, "", "/auth-page");
+        })
     });
 });
-$(document).on('click', '.turn-to-registration-btn', async function (e) {
+$('body').on('click', '.turn-to-registration-btn', async function (e) {
     e.preventDefault();
-    window.location.href = "/registration";
+    e.stopPropagation();
+    mainAjaxFunc("/registration", "GET").then(function (result) {
+        $('body').html(result);
+        window.history.pushState(null, "", "/registration");
+    });
 });
 $(document).on('click', '.turn-to-map', async function (e) {
     e.preventDefault();
+    e.stopPropagation();
     window.location.href = "/";
 });
 

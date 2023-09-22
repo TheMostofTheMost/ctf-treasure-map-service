@@ -27,6 +27,8 @@ public class SecurityConfiguration {
                     request.requestMatchers("/").permitAll();
                     request.requestMatchers("/js/**").permitAll();
                     request.requestMatchers("/login").permitAll();
+                    request.requestMatchers("/registration/fragment").permitAll();
+                    request.requestMatchers("/auth-page/fragment").permitAll();
                     request.requestMatchers("/location/data/**").permitAll();
                     request.requestMatchers("/styles/**").permitAll();
                     request.requestMatchers("/image/**").permitAll();
